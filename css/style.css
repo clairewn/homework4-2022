@@ -1,7 +1,4 @@
-/* TODO: Delete */
-#logo {
-    width: 475px;
-}
+/* https://clairewn.github.io/homework4-2022/hw4.html */
 
 body {
     font-family: 'Poppins', serif;
@@ -39,12 +36,12 @@ a:visited {
     flex-basis: 450px;
 }
 
-/* .pricing {
+.pricing {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
-    justify-items: center;
-} */
+    justify-content: center;
+}
 
 .gallery img {
     border: 10px solid #50C7C7;
@@ -55,15 +52,89 @@ a:visited {
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    justify-items: center;
+    justify-content: center;
+}
+
+#logo {
+    animation-duration: 5s;
+    animation-name: logo_animation;
+}
+
+@keyframes logo_animation {
+    from {
+        width: 25px;
+        opacity: 0;
+    }
+    to {
+        width: 475px;
+        opacity: 1;
+    }
 }
 
 @media screen and (min-width: 900px) {
     header {
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
-    /* TODO: fix */
+    
     .nav_links {
+        flex-direction: row;
         align-items: flex-end;
+    }
+    
+    .card {
+        flex-basis: 250px;
+    }
+
+    body header:not(main header){
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+}
+
+@media screen and (prefers-reduced-motion) {
+    #logo {
+        animation-duration: 0s;
+    }
+}
+
+@media print {
+    body {
+        background-image: none;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .nav_links {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    nav {
+        width: 100%;
+    }
+    
+    .pricing {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .card {
+        border: 2px solid #45ADDD;
+    }
+
+    #gallery {
+        display: none;
+    }
+
+    .gallery {
+        display: none;
+    }
+
+    .pricing li:nth-child(2)::after {
+        content: '👍';
     }
 }
